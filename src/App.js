@@ -12,7 +12,7 @@ class App extends Component {
       <Router>
         <div>
           <Navbar />
-          <div class='main-container'>
+          <div className='main-container'>
             <Route exact path='/' component={SearchContainer} />
             <Route path='/favourites' component={FavouritesContainer} />
           </div>
