@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class Navbar extends Component {
   render () {
+    const { favourites } = this.props
     return (
       <div className='navbar'>
         <div className='navbar-section navbar-logo'>
@@ -13,7 +15,7 @@ class Navbar extends Component {
             Search
           </NavLink>
           <NavLink className='navbar-link' activeClassName='navbar-link-active' to='/favourites'>
-            Favourites
+            Favourites({favourites.length})
           </NavLink>
         </div>
       </div>
@@ -21,4 +23,10 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar
+const mapStateToProps = (state) => {
+  return {
+    favourites: state.favourites
+  }
+}
+
+export default withRouter(connect(mapStateToProps)(Navbar))
