@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import ImageContainer from './ImageContainer'
+import ImageContainer from './ImageContainer';
 
 class Results extends Component {
   constructor (props) {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import SearchContainer from './components/SearchContainer';
 import FavouritesContainer from './components/FavouritesContainer';
@@ -13,8 +13,10 @@ class App extends Component {
         <div>
           <Navbar />
           <div className='main-container'>
-            <Route exact path='/' component={SearchContainer} />
-            <Route path='/favourites' component={FavouritesContainer} />
+            <Switch>
+              <Route exact path='/' component={SearchContainer} />
+              <Route path='/favourites' component={FavouritesContainer} />
+            </Switch>
           </div>
         </div>
       </Router>
