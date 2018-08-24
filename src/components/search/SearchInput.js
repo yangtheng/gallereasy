@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { storeResults } from '../../actions/searchActions'
+import { fetchResults } from '../../api/search'
 
 class SearchInput extends Component {
   constructor (props) {
@@ -15,17 +18,10 @@ class SearchInput extends Component {
     })
   }
 
-  fetchResults () {
-    window.fetch(`http://api.giphy.com/v1/gifs/search?q=${this.state.value}&api_key=G3TGUp3a1oHM8NfYbGVFMG87Trl8h2hp&limit=64`)
-      .then(response => response.json())
-      .then(json => {
-        const urlArr = json.data.map(obj => obj.images.original.url)
-      })
-  }
-
   componentDidUpdate (prevProps, prevState) {
     if (this.state.value !== prevState.value) {
-      this.fetchResults()
+      fetchResults(this.state.value)
+        .then(urlArr => this.props.storeResults(urlArr))
     }
   }
 
@@ -38,4 +34,12 @@ class SearchInput extends Component {
   }
 }
 
-export default SearchInput
+const mapDispatchToProps = (dispatch) => {
+  return {
+    storeResults: (urlArr) => {
+      dispatch(storeResults(urlArr))
+    }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(SearchInput)

@@ -1,5 +1,6 @@
 .navbar {
   border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  background-color: white;
   width: 100vw;
   position: fixed;
   top: 0;
@@ -43,6 +44,7 @@
 .search-input-field {
   font-size: 36px;
   width: 100%;
+  padding: 16px;
   border-top: none;
   border-right: none;
   border-left: none;
@@ -50,4 +52,36 @@
 
 .search-input-field:focus {
   outline: none;
+}
+
+.results-container {
+  /*display: flex;
+  flex-wrap: wrap;
+  justify-content: center;*/
+  width: 80vw;
+  margin: 0 auto;
+}
+
+.results-container:after {
+  content: "";
+  flex: auto;
+}
+
+.results-image {
+  height: calc(20vw - 34px);
+  width: calc(20vw - 34px);
+  margin: 16px;
+  background-size: cover;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  display: inline-block;
+}
+
+.fetch-more-button {
+  margin: 36px 0;
+  display: block;
+  width: 100%;
+}
+
+.end-of-results {
+  text-align: center;
 }
