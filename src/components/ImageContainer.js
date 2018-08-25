@@ -60,7 +60,7 @@ class ImageContainer extends Component {
 const mapStateToProps = (state) => {
   return {
     favourites: state.favourites,
-    searchResults: state.searchResults
+    searchResults: state.searchResults.urlArr
   }
 }
 
