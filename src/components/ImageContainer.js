@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addFavourite, removeFavourite } from '../../actions/favouritesActions'
+import { addFavourite, removeFavourite } from '../actions/favouritesActions'
 
 class ImageContainer extends Component {
   constructor (props) {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { storeResults } from '../../actions/searchActions'
+import { storeResults, resetSearch } from '../../actions/searchActions'
 import { fetchResults } from '../../api/search'
 
 class SearchInput extends Component {
@@ -20,6 +20,7 @@ class SearchInput extends Component {
 
   componentDidUpdate (prevProps, prevState) {
     if (this.state.value !== prevState.value) {
+      this.props.resetSearch()
       fetchResults(this.state.value)
         .then(urlArr => this.props.storeResults(urlArr))
     }
@@ -38,6 +39,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     storeResults: (urlArr) => {
       dispatch(storeResults(urlArr))
+    },
+    resetSearch: () => {
+      dispatch(resetSearch())
     }
   }
 }
