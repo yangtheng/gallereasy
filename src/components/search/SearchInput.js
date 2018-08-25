@@ -23,6 +23,7 @@ class SearchInput extends Component {
       this.props.resetSearch()
       fetchResults(this.state.value)
         .then(urlArr => this.props.storeResults(urlArr))
+        .catch(err => console.log(err))
     }
   }
 
