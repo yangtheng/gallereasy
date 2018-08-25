@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import SearchContainer from './components/SearchContainer';
 import FavouritesContainer from './components/FavouritesContainer';
 
@@ -18,6 +19,7 @@ class App extends Component {
               <Route path='/favourites' component={FavouritesContainer} />
             </Switch>
           </div>
+          <Footer />
         </div>
       </Router>
     );

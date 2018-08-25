@@ -32,6 +32,23 @@
   color: black;
 }
 
+.footer {
+  background-color: rgb(210, 210, 210);
+  width: 100vw;
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
+}
+
+.footer > div {
+  display: inline-block;
+  padding: 16px;
+}
+
+.footer-right-section {
+  float: right;
+}
+
 .main-container {
   margin-top: 56px;
 }
