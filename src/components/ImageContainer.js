@@ -6,11 +6,11 @@ class ImageContainer extends Component {
   constructor (props) {
     super(props)
 
-    const { url, favourites } = props
+    const { img, favourites } = props
 
     this.state = {
       hover: false,
-      isFavourite: favourites.includes(url)
+      isFavourite: favourites.filter(favourite => favourite.id === img.id).length === 1
     }
   }
 
@@ -27,27 +27,27 @@ class ImageContainer extends Component {
   }
 
   handleClick () {
-    const { addFavourite, removeFavourite, url } = this.props
+    const { addFavourite, removeFavourite, img } = this.props
     if (!this.state.isFavourite) {
-      addFavourite(url)
+      addFavourite(img)
     } else {
-      removeFavourite(url)
+      removeFavourite(img)
     }
   }
 
   componentDidUpdate (prevProps) {
-    const { url, favourites, searchResults } = this.props
+    const { img, favourites, searchResults } = this.props
     if (prevProps.favourites !== favourites || prevProps.searchResults !== searchResults) {
       this.setState({
-        isFavourite: favourites.includes(url)
+        isFavourite: favourites.filter(favourite => favourite.id === img.id).length === 1
       })
     }
   }
 
   render () {
-    const { i, url } = this.props
+    const { i, img } = this.props
     return (
-      <div className='results-image' key={i} style={{backgroundImage: `url("${url}")`}} onMouseOver={() => this.handleMouseOver()} onMouseLeave={() => this.handleMouseLeave()} onClick={() => this.handleClick()}>
+      <div className='results-image' key={i} style={{backgroundImage: `url("${img.url}")`}} onMouseOver={() => this.handleMouseOver()} onMouseLeave={() => this.handleMouseLeave()} onClick={() => this.handleClick()}>
         {this.state.isFavourite ?
           <i className='material-icons is-favourite'>favorite</i> :
           this.state.hover && <i className='material-icons not-favourite'>favorite</i>
@@ -60,7 +60,7 @@ class ImageContainer extends Component {
 const mapStateToProps = (state) => {
   return {
     favourites: state.favourites,
-    searchResults: state.searchResults.urlArr
+    searchResults: state.searchResults.imgArr
   }
 }
 

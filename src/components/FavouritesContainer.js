@@ -7,7 +7,7 @@ class FavouritesContainer extends Component {
     const { favourites } = this.props
     return (
       <div className='favourites-container'>
-        {favourites.map((url, i) => <ImageContainer key={i} url={url} />)}
+        {favourites.map((img, i) => <ImageContainer key={i} img={img} />)}
       </div>
     )
   }

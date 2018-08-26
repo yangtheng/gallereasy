@@ -35,9 +35,11 @@
 .footer {
   background-color: rgb(210, 210, 210);
   width: 100%;
-  position: fixed;
+  /*position: fixed;
   bottom: 0;
-  z-index: 1;
+  z-index: 1;*/
+  position: absolute;
+  bottom: 0;
 }
 
 .footer > div {
@@ -51,18 +53,20 @@
 }
 
 .main-container {
-  margin-top: 5vh;
+  min-height: 100vh;
+  position: relative;
 }
 
 .search-input-container {
   width: 60vw;
+  max-width: 750px;
   margin: 0 auto;
-  padding-top: 56px;
+  padding-top: 20vh;
 }
 
 .search-input-field {
   font-size: 36px;
-  width: 100%;
+  width: calc(100% - 32px);
   padding: 16px;
   border-top: none;
   border-right: none;
@@ -75,21 +79,20 @@
 
 .results-container, .favourites-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-gap: 2vw;
   width: 80vw;
-}
-
-.results-container {
-  margin: 10vh auto 0 auto;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-top: 10vh;
 }
 
 .favourites-container {
-  margin: 10vh auto;
+  padding-bottom: 10vh;
 }
 
 .results-image {
-  height: 18vw;
+  height: 200px;
   background-size: cover;
   border: 1px solid rgba(0, 0, 0, 0.4);
   display: inline-block;
@@ -98,9 +101,11 @@
   cursor: pointer;
 }
 
-.fetch-more-container, .end-of-results {
+.fetch-more-container {
   width: 80vw;
-  margin: 0 auto 10vh auto;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-bottom: 10vh;
 }
 
 .fetch-more-button {
@@ -112,6 +117,17 @@
   border-radius: 5px;
   border-style: solid;
   cursor: pointer;
+  background-color: rgb(210, 210, 210);
+  -webkit-transition: background-color 0.2s;
+  transition: background-color 0.2s;
+}
+
+.fetch-more-button:hover {
+  background-color: rgb(190, 190, 190);
+}
+
+.fetch-more-button:focus {
+  outline: none;
 }
 
 .end-of-results {
@@ -131,7 +147,7 @@
   opacity: 0.5;
 }
 
-@media only screen and (max-width: 768px) {
+/*@media only screen and (max-width: 768px) {
   .results-container, .favourites-container {
     display: grid;
     grid-template-columns: 1fr;
@@ -142,4 +158,4 @@
   .results-image {
     height: 78vw;
   }
-}
+}*/

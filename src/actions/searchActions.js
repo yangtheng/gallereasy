@@ -11,10 +11,10 @@ export const updateQuery = (query) => {
   }
 }
 
-export const storeResults = (urlArr) => {
+export const storeResults = (imgArr) => {
   return {
     type: 'STORE_RESULTS',
-    urlArr
+    imgArr
   }
 }
 

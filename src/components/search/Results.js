@@ -5,7 +5,7 @@ import { changeDisplayCount } from '../../actions/searchActions'
 
 class Results extends Component {
   componentDidUpdate (prevProps) {
-    if (prevProps.urlArr !== this.props.urlArr && this.props.displayCount !== 8) {
+    if (prevProps.imgArr !== this.props.imgArr && this.props.displayCount !== 8) {
       this.props.changeDisplayCount(8)
     }
   }
@@ -15,19 +15,19 @@ class Results extends Component {
   }
 
   render () {
-    const { urlArr, displayCount } = this.props
+    const { imgArr, displayCount } = this.props
     return (
       <div>
         <div className='results-container'>
-          {urlArr.slice(0, displayCount).map((url, i) => <ImageContainer key={i} url={url} />)}
+          {imgArr.slice(0, displayCount).map((img, i) => <ImageContainer key={i} img={img} />)}
         </div>
         <div className='fetch-more-container'>
-          {urlArr.length > 0 && displayCount < urlArr.length && (
+          {imgArr.length > 0 && displayCount < imgArr.length && (
             <div>
               <button className='fetch-more-button' onClick={() => this.handleFetchMore()}>Fetch More</button>
             </div>
           )}
-          {displayCount >= urlArr.length && urlArr.length > 0 && (
+          {displayCount >= imgArr.length && imgArr.length > 0 && (
             <div className='end-of-results'>
               <p>End of Results</p>
             </div>
@@ -40,7 +40,7 @@ class Results extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    urlArr: state.searchResults.urlArr,
+    imgArr: state.searchResults.imgArr,
     displayCount: state.searchResults.displayCount
   }
 }

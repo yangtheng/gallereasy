@@ -8,7 +8,7 @@ class SearchInput extends Component {
     if (this.props.query !== prevProps.query) {
       this.props.resetSearch()
       fetchResults(this.props.query)
-        .then(urlArr => this.props.storeResults(urlArr))
+        .then(imgArr => this.props.storeResults(imgArr))
         .catch(err => console.log(err))
     }
   }
@@ -34,8 +34,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    storeResults: (urlArr) => {
-      dispatch(storeResults(urlArr))
+    storeResults: (imgArr) => {
+      dispatch(storeResults(imgArr))
     },
     resetSearch: () => {
       dispatch(resetSearch())

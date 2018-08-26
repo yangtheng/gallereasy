@@ -15,7 +15,7 @@ class Navbar extends Component {
             Search
           </NavLink>
           <NavLink className='navbar-link' activeClassName='navbar-link-active' to='/favourites'>
-            Favourites({favourites.length})
+            Favourites ({favourites.length})
           </NavLink>
         </div>
       </div>

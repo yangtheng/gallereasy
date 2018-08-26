@@ -1,13 +1,13 @@
-export const addFavourite = (url) => {
+export const addFavourite = (img) => {
   return {
     type: 'ADD_FAVOURITE',
-    url
+    img
   }
 }
 
-export const removeFavourite = (url) => {
+export const removeFavourite = (img) => {
   return {
     type: 'REMOVE_FAVOURITE',
-    url
+    img
   }
 }
