@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { storeResults, resetSearch, updateQuery } from '../../actions/searchActions'
-import { fetchResults } from '../../api/search'
+import { storeResults, resetSearch, updateQuery } from '../../actions/searchActions';
+import { fetchResults } from '../../api/search';
 
 class SearchInput extends Component {
   componentDidUpdate (prevProps) {

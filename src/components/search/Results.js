@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ImageContainer from '../ImageContainer';
-import { changeDisplayCount } from '../../actions/searchActions'
+import { changeDisplayCount } from '../../actions/searchActions';
 
 class Results extends Component {
   componentDidUpdate (prevProps) {

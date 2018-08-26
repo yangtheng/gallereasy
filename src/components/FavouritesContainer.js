@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import ImageContainer from './ImageContainer'
+import { connect } from 'react-redux';
+import ImageContainer from './ImageContainer';
 
 class FavouritesContainer extends Component {
   render () {
