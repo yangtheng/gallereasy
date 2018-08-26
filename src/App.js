@@ -9,6 +9,7 @@ import './App.css'
 
 class App extends Component {
   render () {
+    console.log(process.env.REACT_APP_PUBLIC_URL);
     return (
       <Router basename={process.env.REACT_APP_PUBLIC_URL}>
         <div className='main-container'>
