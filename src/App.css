@@ -81,10 +81,10 @@
   width: 80vw;
   max-width: 1000px;
   margin: 0 auto;
-  padding-top: 10vh;
 }
 
 .favourites-container {
+  padding-top: 10vh;
   padding-bottom: 10vh;
 }
 
@@ -144,6 +144,11 @@
 
 .not-favourite {
   opacity: 0.5;
+}
+
+.spinner {
+  padding-top: 10vh;
+  text-align: center;
 }
 
 @media only screen and (max-width: 768px) {

@@ -7,7 +7,7 @@ export const statusReducer = (state = {
       return {
         ...state,
         ...{
-          loading: !state.loading
+          loading: action.loading
         }
       }
     case 'STORE_ERROR':

@@ -7,12 +7,12 @@ import { fetchResults } from '../../api/search';
 class SearchInput extends Component {
   componentDidUpdate (prevProps) {
     if (this.props.query !== prevProps.query) {
-      this.props.toggleLoading()
+      this.props.toggleLoading(true)
       this.props.resetSearch()
       fetchResults(this.props.query)
         .then(imgArr => {
           this.props.storeResults(imgArr)
-          this.props.toggleLoading()
+          this.props.toggleLoading(false)
         })
         .catch(err => this.props.storeError(err))
     }
@@ -48,8 +48,8 @@ const mapDispatchToProps = (dispatch) => {
     updateQuery: (query) => {
       dispatch(updateQuery(query))
     },
-    toggleLoading: () => {
-      dispatch(toggleLoading())
+    toggleLoading: (loading) => {
+      dispatch(toggleLoading(loading))
     },
     storeError: (error) => {
       dispatch(storeError(error))

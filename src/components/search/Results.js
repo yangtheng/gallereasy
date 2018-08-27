@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ImageContainer from '../ImageContainer';
+import Spinner from '../ui-components/Spinner';
 import { changeDisplayCount } from '../../actions/searchActions';
 
 class Results extends Component {
@@ -15,12 +16,13 @@ class Results extends Component {
   }
 
   render () {
-    const { imgArr, displayCount, query } = this.props
+    const { imgArr, displayCount, query, loading } = this.props
     return (
       <div>
+        <Spinner />
         <div className='results-container'>
           {query && imgArr.length > 0 && imgArr.slice(0, displayCount).map((img, i) => <ImageContainer key={i} img={img} />)}
-          {query && imgArr.length === 0 && (
+          {!loading && query && imgArr.length === 0 && (
             <div className='no-results'>
               <p>No Results</p>
             </div>
@@ -47,7 +49,8 @@ const mapStateToProps = (state) => {
   return {
     imgArr: state.searchResults.imgArr,
     displayCount: state.searchResults.displayCount,
-    query: state.searchResults.query
+    query: state.searchResults.query,
+    loading: state.status.loading
   }
 }
 
