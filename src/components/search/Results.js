@@ -15,11 +15,16 @@ class Results extends Component {
   }
 
   render () {
-    const { imgArr, displayCount } = this.props
+    const { imgArr, displayCount, query } = this.props
     return (
       <div>
         <div className='results-container'>
-          {imgArr.slice(0, displayCount).map((img, i) => <ImageContainer key={i} img={img} />)}
+          {query && imgArr.length > 0 && imgArr.slice(0, displayCount).map((img, i) => <ImageContainer key={i} img={img} />)}
+          {query && imgArr.length === 0 && (
+            <div className='no-results'>
+              <p>No Results</p>
+            </div>
+          )}
         </div>
         <div className='fetch-more-container'>
           {imgArr.length > 0 && displayCount < imgArr.length && (
@@ -41,7 +46,8 @@ class Results extends Component {
 const mapStateToProps = (state) => {
   return {
     imgArr: state.searchResults.imgArr,
-    displayCount: state.searchResults.displayCount
+    displayCount: state.searchResults.displayCount,
+    query: state.searchResults.query
   }
 }
 

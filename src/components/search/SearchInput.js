@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { storeResults, resetSearch, updateQuery } from '../../actions/searchActions';
+import { toggleLoading, storeError } from '../../actions/statusActions';
 import { fetchResults } from '../../api/search';
 
 class SearchInput extends Component {
   componentDidUpdate (prevProps) {
     if (this.props.query !== prevProps.query) {
+      this.props.toggleLoading()
       this.props.resetSearch()
       fetchResults(this.props.query)
-        .then(imgArr => this.props.storeResults(imgArr))
-        .catch(err => console.log(err))
+        .then(imgArr => {
+          this.props.storeResults(imgArr)
+          this.props.toggleLoading()
+        })
+        .catch(err => this.props.storeError(err))
     }
   }
 
@@ -42,6 +47,12 @@ const mapDispatchToProps = (dispatch) => {
     },
     updateQuery: (query) => {
       dispatch(updateQuery(query))
+    },
+    toggleLoading: () => {
+      dispatch(toggleLoading())
+    },
+    storeError: (error) => {
+      dispatch(storeError(error))
     }
   }
 }

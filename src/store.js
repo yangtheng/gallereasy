@@ -3,10 +3,12 @@ import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import { favouritesReducer } from './reducers/favouritesReducer';
 import { searchReducer } from './reducers/searchReducer';
+import { statusReducer } from './reducers/statusReducer';
 
 const reducers = combineReducers({
   searchResults: searchReducer,
-  favourites: favouritesReducer
+  favourites: favouritesReducer,
+  status: statusReducer
 })
 
 const persistConfig = {

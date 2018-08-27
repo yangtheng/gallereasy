@@ -9,9 +9,8 @@ import './App.css'
 
 class App extends Component {
   render () {
-    console.log(process.env.REACT_APP_PUBLIC_URL);
     return (
-      <Router basename={process.env.REACT_APP_PUBLIC_URL}>
+      <Router basename={process.env.REACT_APP_NAME}>
         <div className='main-container'>
           <Navbar />
           <div className='body-container'>
