@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { storeResults, resetSearch, updateQuery } from '../../actions/searchActions';
-import { toggleLoading, storeError } from '../../actions/statusActions';
+import { toggleLoading, storeError, removeError } from '../../actions/statusActions';
 import { fetchResults } from '../../api/search';
 
 class SearchInput extends Component {
@@ -14,7 +14,15 @@ class SearchInput extends Component {
           this.props.storeResults(imgArr)
           this.props.toggleLoading(false)
         })
-        .catch(err => this.props.storeError(err))
+        .catch(err => {
+          console.log(err)
+          if (!this.props.error) {
+            this.props.storeError('There was an error loading the results, please check your connection and try again.')
+            setTimeout(() => {
+              this.props.removeError()
+            }, 3000)
+          }
+        })
     }
   }
 
@@ -33,7 +41,8 @@ class SearchInput extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    query: state.searchResults.query
+    query: state.searchResults.query,
+    error: state.status.error
   }
 }
 
@@ -53,6 +62,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     storeError: (error) => {
       dispatch(storeError(error))
+    },
+    removeError: () => {
+      dispatch(removeError())
     }
   }
 }

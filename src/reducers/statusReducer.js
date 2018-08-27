@@ -17,6 +17,13 @@ export const statusReducer = (state = {
           error: action.error
         }
       }
+    case 'REMOVE_ERROR':
+      return {
+        ...state,
+        ...{
+          error: ''
+        }
+      }
     default:
       return state
   }

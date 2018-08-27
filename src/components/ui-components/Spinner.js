@@ -3,13 +3,12 @@ import { connect } from 'react-redux';
 import { ClipLoader } from 'react-spinners';
 
 const Spinner = (props) => {
+  const { loading } = props
   return (
     <div className='spinner'>
       <ClipLoader
-        sizeUnit={'px'}
-        size={150}
         color={'black'}
-        loading={props.loading}
+        loading={loading}
       />
     </div>
   )

@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import SearchContainer from './components/SearchContainer';
 import FavouritesContainer from './components/FavouritesContainer';
+import Snackbar from './components/ui-components/Snackbar';
 
 import './App.css'
 
@@ -19,6 +20,7 @@ class App extends Component {
               <Route path='/favourites' component={FavouritesContainer} />
             </Switch>
           </div>
+          <Snackbar />
           <Footer />
         </div>
       </Router>

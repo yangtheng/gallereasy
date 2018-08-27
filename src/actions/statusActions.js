@@ -11,3 +11,9 @@ export const storeError = (error) => {
     error
   }
 };
+
+export const removeError = () => {
+  return {
+    type: 'REMOVE_ERROR'
+  }
+};
