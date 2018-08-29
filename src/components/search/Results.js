@@ -21,7 +21,7 @@ class Results extends Component {
       <div>
         <Spinner />
         <div className='results-container'>
-          {query && imgArr.length > 0 && imgArr.slice(0, displayCount).map((img, i) => <ImageContainer key={i} img={img} />)}
+          {query && imgArr.length > 0 && imgArr.slice(0, displayCount).map((img, i) => <ImageContainer key={i} img={img} lastColumn={(i + 1) % 4 === 0} />)}
           {!loading && query && imgArr.length === 0 && (
             <div className='no-results'>
               <p>No Results</p>

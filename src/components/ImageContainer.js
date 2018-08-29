@@ -45,9 +45,9 @@ class ImageContainer extends Component {
   }
 
   render () {
-    const { i, img } = this.props
+    const { i, img, lastColumn } = this.props
     return (
-      <div className='results-image' key={i} style={{backgroundImage: `url("${img.url}")`}} onMouseOver={() => this.handleMouseOver()} onMouseLeave={() => this.handleMouseLeave()} onClick={() => this.handleClick()}>
+      <div className={lastColumn ? 'results-image last-col' : 'results-image'} key={i} style={{backgroundImage: `url("${img.url}")`}} onMouseOver={() => this.handleMouseOver()} onMouseLeave={() => this.handleMouseLeave()} onClick={() => this.handleClick()}>
         {this.state.isFavourite ?
           <i className='material-icons is-favourite'>favorite</i> :
           this.state.hover && <i className='material-icons not-favourite'>favorite</i>
